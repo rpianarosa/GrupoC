@@ -1,3 +1,9 @@
 from django.contrib import admin
+from GrupoC.models import Cerveza, Cerveceria, Experiencia
 
-# Register your models here.
+# Usuario:admin
+# Password:admin
+
+admin.site.register(Cerveza)
+admin.site.register(Cerveceria)
+admin.site.register(Experiencia)

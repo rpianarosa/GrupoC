@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from GrupoC.views import Cerveza
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('GrupoC/',include('GrupoC.urls'))
+    path('Cerveblog/',include('GrupoC.urls'))
 ]
