@@ -3035,7 +3035,7 @@ textarea.form-control-lg {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0b5ed7;
+  background-color: #86a9df;
   border-color: #0a58ca;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -11301,9 +11301,9 @@ textarea.form-control-lg {
 }
 
 header.masthead {
-  position: static;
+  position: relative;
   background-color: #343a40;
-  background: url("../assets/img/beer.jpg") no-repeat center center;
+  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -11311,7 +11311,7 @@ header.masthead {
 header.masthead:before {
   content: "";
   position: absolute;
-  background-color: #fff;
+  background-color: #1c375e;
   height: 100%;
   width: 100%;
   top: 0;
@@ -11323,8 +11323,8 @@ header.masthead h1, header.masthead .h1 {
 }
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 30rem;
+    padding-bottom: 30rem;
   }
   header.masthead h1, header.masthead .h1 {
     font-size: 3rem;
@@ -11359,7 +11359,7 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/beer.jpg") no-repeat center center;
+  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 7rem;
   padding-bottom: 7rem;
