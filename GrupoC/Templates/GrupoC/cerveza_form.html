@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cervezas</title>
+    <title>Nueva Cerveza</title>
     <link rel="icon" type="image/x-icon" href="{% static 'GrupoC/assets/beer.ico' %}" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
@@ -14,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     
     <link href="{% static 'GrupoC/css/styles.css' %}" rel="stylesheet" />
+
 </head>
 <body>
     <nav class="navbar navbar-light bg-light static-top">
@@ -26,32 +26,11 @@
             <a class="btn btn-primary" href="#signup">Unite</a>
         </div>
     </nav>
-    <div>
-        <h1 class="row justify-content-center">Cervezas</h1>
-        <ul>
-            {% for cerveza in object_list %}
-
-                
-                    <h5 >
-                        <p class="row justify-content-center">- {{ cerveza.nombre }} - </p>
-                        <p > 
-                            <a class="row justify-content-center" href="{% url 'Detail' cerveza.nombre %}">Ver 
-                            <a class="row justify-content-center" href="{% url 'Edit' cerveza.nombre %}">Editar</a> 
-                            <a class="row justify-content-center" href="{% url 'Delete' cerveza.nombre %}">Borrar
-                                
-                            </a> 
-                        </p>
-                    </h5>
-                
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send" />
+    </form>
     
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" href="{% url 'New'  %}">Nuevo</a> 
-    </div> 
-
-
 </body>
 </html>
-
