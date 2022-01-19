@@ -1,4 +1,4 @@
-# GrupoC 
+# Entrega 1 - GrupoC 
 
 CerveBlog es una pagina destinada a buscar las caracteristicas de los diferentes tipos de cervezas, las cervecerias mas conocidas y un espacio para contar tu experiencia. 
 Se inicia con una pagina principal donde se debe apretar el boton de ingreso.
