@@ -1,11 +1,12 @@
 from django.urls import path
 from GrupoC import views
 from GrupoC.views import CervezaList, CervezaCreate, CervezaDelete, CervezaUpdate, CervezaDetail
-from GrupoC.views import CerveceriaList, CerveceriaCreate, ExperienciaCreate, ExperienciaDelete, ExperienciaDetail, ExperienciaList
+from GrupoC.views import CerveceriaList, CerveceriaCreate, ExperienciaCreate, ExperienciaDelete, ExperienciaUpdate, ExperienciaList
 
 urlpatterns = [
     path('', views.Inicio, name="Inicio"),
     path('Contacto', views.Contacto , name='Contacto'),
+    path('Acercade', views.Acercade , name='Acercade'),
 
     path('listaCervezas', views.CervezaList.as_view(),name='List'),
     path('detalleCervezas/<pk>', views.CervezaDetail.as_view(),name='Detail'),
@@ -18,7 +19,7 @@ urlpatterns = [
     path('borrarCervezas/<pk>/', views.CervezaDelete.as_view(),name='Delete'),
     
     path('listaExperiencia', views.ExperienciaList.as_view(),name='ListExp'),
-    path('detalleExperiencia/<pk>', views.ExperienciaDetail.as_view(),name='DetailExp'),
+    path('editarExperiencia/<pk>', views.ExperienciaUpdate.as_view(),name='EditExp'),
     path('borrarExperiencia/<pk>/', views.ExperienciaDelete.as_view(),name='DeleteExp'),
     path('nuevaExperiencia', views.ExperienciaCreate.as_view(),name='NewExp'),
 

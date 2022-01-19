@@ -33,14 +33,17 @@
 
                 
                     <h5 >
-                        <p class="row justify-content-center">- {{ experiencia.nombre }} - </p>
-                        <p class="row justify-content-center">- {{ experiencia.apellido }} - </p>
+                        <p class="text-center">- {{ experiencia.nombre }} {{ experiencia.apellido }} - </p>
+                        
                         <p > 
                             <h6 class="row justify-content-center">Cerveza Tomada: {{ experiencia.cerv_tomada }} </h6>
                             <h6 class="row justify-content-center">Cerveceria: {{ experiencia.cerv_atend }} </h6>
                             <h6 class="row justify-content-center">Puntaje Cerveza: {{ experiencia.punt_cerveza }} </h6>
                             <h6 class="row justify-content-center">Puntaje Cerveceria: {{ experiencia.punt_cerveceria }} </h6>
-                            
+                            <div class="text-center">
+                                <a href="{% url 'DeleteExp' experiencia.id %}">Eliminar</a> 
+                                <a href="{% url 'EditExp' experiencia.id %}">Editar</a> 
+                            </div>
                             </a> 
                         </p>
                     </h5>
@@ -49,8 +52,8 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" href="{% url 'NewExp'  %}">Nuevo</a> 
+    <div class="text-center">
+        <a class="btn btn-primary" href="{% url 'NewExp'  %}">Nueva Experiencia</a> 
     </div> 
 
 

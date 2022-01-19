@@ -18,10 +18,12 @@ class Cerveceria(models.Model):
         return self.nombre
 class Experiencia(models.Model):
     
-    nombre=models.CharField('Nombre', max_length=40)
-    apellido=models.CharField('Apellido', max_length=40)
-    cerv_tomada= models.CharField('¿Que cerveza tomaste?', max_length=40)
-    cerv_atend=models.CharField('¿A cual cerveceria fuiste?', max_length=40)
-    punt_cerveza=models.IntegerField('Puntaje Cerveza')
-    punt_cerveceria=models.IntegerField('Puntaje Cerveceria')
+    nombre=models.CharField('Nombre',null=True, max_length=40)
+    apellido=models.CharField('Apellido', null=True, max_length=40)
+    cerv_tomada= models.CharField('¿Que cerveza tomaste?',null=True, max_length=40)
+    cerv_atend=models.CharField('¿A cual cerveceria fuiste?', null=True, max_length=40)
+    punt_cerveza=models.IntegerField('Puntaje Cerveza', null=True)
+    punt_cerveceria=models.IntegerField('Puntaje Cerveceria', null=True)
     
+    def __str__ (self):
+        return f' {self.nombre} {self.apellido}'

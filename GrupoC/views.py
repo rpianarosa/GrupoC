@@ -20,6 +20,10 @@ def Contacto(req):
 
     return render(req,'GrupoC/contacto.html')
 
+def Acercade(req):
+
+    return render(req,'GrupoC/acercade.html')
+
 class CervezaList (ListView):
     model= Cerveza
     template_name = "GrupoC/cerveza_list.html"
@@ -62,11 +66,13 @@ class CerveceriaCreate (CreateView):
 
 class ExperienciaList (ListView):
     model= Experiencia
-    template_name = "GrupoC/experiencia_list.html"
+    template_name = "GrupoC/experiencias_list.html"
 
-class ExperienciaDetail (DetailView):
+class ExperienciaUpdate (UpdateView):
     model= Experiencia
-    template_name = "GrupoC/experiencia_detail.html"
+    success_url = '/Cerveblog/listaExperiencia'
+    fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
+    template_name = "GrupoC/experiencia_form.html"
 
 class ExperienciaDelete (DeleteView):
     model= Experiencia
