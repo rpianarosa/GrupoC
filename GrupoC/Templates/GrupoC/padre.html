@@ -24,7 +24,7 @@
                 <li class="list-inline-item">-</li>
                 <a class="navbar-brand" href="{% url 'List' %}">Cervezas</a>
                 <a class="navbar-brand" href="{% url 'ListCerve' %}">Cervecerias</a>
-                <a class="navbar-brand" href="{% url 'Experiencias' %}">Experiencias</a>
+                <a class="navbar-brand" href="{% url 'NewExp' %}">Experiencias</a>
                 <a class="btn btn-primary" href="#signup">Unite</a>
             </div>
         </nav>
@@ -54,7 +54,7 @@
         </header>
         <div class="text-center">
             
-            <h1> Bienvenidos! </h1>
+            <h1> ¡Bienvenidos! </h1>
         </div>
         {% block contenidoQueCambia %}
             
@@ -68,7 +68,7 @@
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item"><a href="#!">Acerca de</a></li>
                             <li class="list-inline-item">-</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                            <li class="list-inline-item"><a href="{% url 'Contacto' %}">Contacto</a></li>
                             
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0"> Ramiro Pianarosa - Ricardo Minhot - Roberto Higuera.</p>

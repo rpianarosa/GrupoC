@@ -21,12 +21,12 @@
             <li class="list-inline-item">-</li>
             <a class="navbar-brand" href="{% url 'List' %}">Cervezas</a>
             <a class="navbar-brand" href="{% url 'ListCerve' %}">Cervecerias</a>
-            <a class="navbar-brand" href="{% url 'Experiencias' %}">Experiencias</a>
+            <a class="navbar-brand" href="{% url 'NewExp' %}">Experiencias</a>
             <a class="btn btn-primary" href="#signup">Unite</a>
         </div>
     </nav>
     <div>
-        <h1 class="row justify-content-center">Cervecerias</h1>
+        <h1 class="text-center">Cervecerias</h1>
         <ul>
             {% for cerveceria in object_list %}
 
@@ -34,11 +34,8 @@
                     <h5 >
                         <p class="row justify-content-center">- {{ cerveceria.nombre }} - </p>
                         <p > 
-                            <a class="row justify-content-center" href="{% url 'DetailCerve' cerveceria.nombre %}">Ver 
-                            <a class="row justify-content-center" href="{% url 'EditCerve' cerveceria.nombre %}">Editar</a> 
-                            <a class="row justify-content-center" href="{% url 'DeleteCerve' cerveceria.nombre %}">Borrar
-                                
-                            </a> 
+                            <h6 class="row justify-content-center">{{ cerveceria.dire }} </h6>
+                            
                         </p>
                     </h5>
                 
@@ -46,8 +43,8 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" href="{% url 'NewCerve'  %}">Nuevo</a> 
+    <div class="text-center">
+        <a class="btn btn-primary" href="{% url 'NewCerve'  %}">Nueva Cerveceria</a> 
     </div>
 
 </body>

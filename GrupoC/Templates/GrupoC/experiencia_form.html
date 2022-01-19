@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Cerveza</title>
+    <title>Nueva Experiencia</title>
     <link rel="icon" type="image/x-icon" href="{% static 'GrupoC/assets/beer.ico' %}" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light static-top">
-        <div class="container">
+        <div class="container ">
             <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a> 
             <li class="list-inline-item">-</li>
             <a class="navbar-brand" href="{% url 'List' %}">Cervezas</a>
@@ -26,12 +26,13 @@
             <a class="btn btn-primary" href="#signup">Unite</a>
         </div>
     </nav>
+    <h1 class="container justify-content-center"> Contanos tu experiencia </h1>
     <div class="container justify-content-center ">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Enviar" />
         </form>
-    </div>
+    <div>
 </body>
 </html>

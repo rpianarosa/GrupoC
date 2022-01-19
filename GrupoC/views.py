@@ -16,19 +16,9 @@ def Inicio(req):
 
     return render(req,'GrupoC/inicio.html')
 
-def Cervezas(req):
+def Contacto(req):
 
-    return render(req,'GrupoC/cervezas.html')
-
-    
-def Cervecerias(req):
-
-    return render(req,'GrupoC/cervecerias.html')
-
-def Experiencias(req):
-
-    return render(req,'GrupoC/experiencias.html')
-
+    return render(req,'GrupoC/contacto.html')
 
 class CervezaList (ListView):
     model= Cerveza
@@ -40,22 +30,20 @@ class CervezaDetail (DetailView):
 
 class CervezaUpdate (UpdateView):
     model= Cerveza
-    success_url = '/GrupoC/listaCervezas'
-    fields= ['nombre' , 'IBU', 'grad_alcohol']
-    template_name = "GrupoC/cerveza_list.html"
-
-class CervezaDelete (DeleteView):
-    model= Cerveza
-    success_url = '/GrupoC/Cervezas/list'
-    template_name = "GrupoC/cerveza_list.html"
-
-class CervezaCreate (CreateView):
-    model= Cerveza
-    success_url = '/GrupoC/Cervezas/list'
+    success_url = '/Cerveblog/listaCervezas'
     fields= ['nombre' , 'IBU', 'grad_alcohol']
     template_name = "GrupoC/cerveza_form.html"
 
+class CervezaDelete (DeleteView):
+    model= Cerveza
+    success_url = '/Cerveblog/listaCervezas'
+    template_name = "GrupoC/cerveza_conf_delete.html"
 
+class CervezaCreate (CreateView):
+    model= Cerveza
+    success_url = '/Cerveblog/listaCervezas'
+    fields= ['nombre' , 'IBU', 'grad_alcohol']
+    template_name = "GrupoC/cerveza_form.html"
 
 
 
@@ -63,25 +51,30 @@ class CervezaCreate (CreateView):
 class CerveceriaList (ListView):
     model= Cerveceria
     template_name = "GrupoC/cerveceria_list.html"
-
-class CerveceriaDetail (DetailView):
-    model= Cerveceria
-    template_name = "GrupoC/cerveceria_detail.html"
-
-class CerveceriaUpdate (UpdateView):
-    model= Cerveceria
-    success_url = '/GrupoC/listaCervezas'
-    fields= ['nombre' , 'IBU', 'grad_alcohol']
-    template_name = "GrupoC/cerveceria_list.html"
-
-class CerveceriaDelete (DeleteView):
-    model= Cerveceria
-    success_url = '/GrupoC/Cervezas/list'
-    template_name = "GrupoC/cerveceria_list.html"
-
 class CerveceriaCreate (CreateView):
     model= Cerveceria
-    success_url = '/GrupoC/Cervezas/list'
-    fields= ['nombre' , 'IBU', 'grad_alcohol']
+    success_url = '/Cerveblog/listaCervecerias'
+    fields= ['nombre' , 'dire']
     template_name = "GrupoC/cerveceria_form.html"
 
+
+
+
+class ExperienciaList (ListView):
+    model= Experiencia
+    template_name = "GrupoC/experiencia_list.html"
+
+class ExperienciaDetail (DetailView):
+    model= Experiencia
+    template_name = "GrupoC/experiencia_detail.html"
+
+class ExperienciaDelete (DeleteView):
+    model= Experiencia
+    success_url = '/Cerveblog/listaExperiencia'
+    template_name = "GrupoC/experiencia_conf_delete.html"
+
+class ExperienciaCreate (CreateView):
+    model= Experiencia
+    success_url = '/Cerveblog/listaExperiencia'
+    fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
+    template_name = "GrupoC/experiencia_form.html"

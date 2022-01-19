@@ -22,7 +22,7 @@
             <li class="list-inline-item">-</li>
             <a class="navbar-brand" href="{% url 'List' %}">Cervezas</a>
             <a class="navbar-brand" href="{% url 'ListCerve' %}">Cervecerias</a>
-            <a class="navbar-brand" href="{% url 'Experiencias' %}">Experiencias</a>
+            <a class="navbar-brand" href="{% url 'NewExp' %}">Experiencias</a>
             <a class="btn btn-primary" href="#signup">Unite</a>
         </div>
     </nav>
@@ -32,23 +32,28 @@
             {% for cerveza in object_list %}
 
                 
-                    <h5 >
-                        <p class="row justify-content-center">- {{ cerveza.nombre }} - </p>
-                        <p > 
-                            <a class="row justify-content-center" href="{% url 'Detail' cerveza.nombre %}">Ver 
-                            <a class="row justify-content-center" href="{% url 'Edit' cerveza.nombre %}">Editar</a> 
-                            <a class="row justify-content-center" href="{% url 'Delete' cerveza.nombre %}">Borrar
-                                
+                    <h3>
+                        <p class="text-center">---------------------------------------------------------</p>
+                        <p class="text-center">- {{ cerveza.nombre }} - </p>
+                        
+                        <p> 
+                            <h6 class="text-center">IBU: {{ cerveza.IBU }} </h6>
+                            <h6 class="text-center">ABV: {{ cerveza.grad_alcohol }} </h6>
+                                <div class="text-center">
+                                    <a href="{% url 'Detail' cerveza.id %}">Ver |
+                                    <a href="{% url 'Edit' cerveza.id %}">Editar |</a> 
+                                    <a  href="{% url 'Delete' cerveza.id %}">Borrar
+                                </div>
                             </a> 
                         </p>
-                    </h5>
+                    </h3>
                 
     
             {% endfor %}
         </ul>
     </div>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" href="{% url 'New'  %}">Nuevo</a> 
+    <div class="text-center">
+        <a class="btn btn-primary" href="{% url 'New'  %}">Nueva Cerveza</a> 
     </div> 
 
 
