@@ -8,13 +8,16 @@ from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
 from GrupoC.models import Cerveza, Cerveceria, Experiencia
 
+from django import forms
+from datetime import date
+
 def PreInicio(req):
 
     return render(req,'GrupoC/preinicio.html')
 
 def Inicio(req):
 
-    return render(req,'GrupoC/inicio.html')
+    return render(req,'GrupoC/padre2.html')
 
 def Contacto(req):
 
@@ -84,3 +87,18 @@ class ExperienciaCreate (CreateView):
     success_url = '/Cerveblog/listaExperiencia'
     fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
     template_name = "GrupoC/experiencia_form.html"
+
+
+class FechaForm(forms.Form):
+    intro_fecha= forms.DateField()
+    
+
+def calcular_edad(intro_fecha):
+    dif= date.today() - intro_fecha
+
+    if dif < 18:    
+        return ("No cumple con la edad requerida para ingresar")
+    
+    else:
+        return render('GrupoC/inicio.html')
+    
