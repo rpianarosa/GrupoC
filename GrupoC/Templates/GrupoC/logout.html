@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Confirmar Eliminar</title>
+        <title>Logout</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'statictwo/GrupoC/assets/favicon.ico' %}" />
         <!-- Bootstrap Icons-->
@@ -38,11 +38,10 @@
             </div>
         </nav>
         <header class="masthead">
-            <form method="post">{% csrf_token %}
-                ¿Eliminar "{{ object }}" de la lista?
-                <input type="submit" value="Si" />
-            </form>
-            <a href="{% url 'List' %}">Regresar</a>
-        </header>
-    </body>
+
+
+
+            <h1>Te has deslogueado...</h1>
+    
+</body>
 </html>

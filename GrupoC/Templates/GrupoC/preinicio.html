@@ -26,19 +26,18 @@
                 
                 <h1 class="text-center text-white"> ¡Bienvenido! </h1>
                 <hr class="divider" />
-                <form action="{% url 'Inicio' %}" method="post"> {% csrf_token %}
+                <form action="{% url 'Inicio' %}" method="POST"> {% csrf_token %}
                 <h3 class="text-center text-white"> Introduce tu fecha de nacimiento </h3>
                         <div style="text-align: center">
-                            <input type="date" min="1930-01-01" max="2022-02-28">
-                            
+                            <input name="date" type="date" min="1930-01-01" max="2022-02-28">
                         </div>
                     <h6 class="text-center text-white"> </h6>
                 <div class="text-center">
-                    <a class="btn btn-primary btn-sm" href="{% url 'Inicio' %}">Ingresar a CerveBlog</a>
+                    <button type="submit" class="btn btn-primary btn-sm">Ingresa a CerveBlog</button>
                 </div>
                 </form>
                 <div class="text-center">
-                    {{error}}
+                    <h4 class="mt-2">{{error}}</h4>
                 </div>
             </div>   
         </header>

@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Confirmar Eliminar</title>
+        <title>Registro</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'statictwo/GrupoC/assets/favicon.ico' %}" />
         <!-- Bootstrap Icons-->
@@ -21,6 +21,7 @@
         <link href="{% static 'statictwo/GrupoC/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
@@ -38,11 +39,15 @@
             </div>
         </nav>
         <header class="masthead">
-            <form method="post">{% csrf_token %}
-                ¿Eliminar "{{ object }}" de la lista?
-                <input type="submit" value="Si" />
-            </form>
-            <a href="{% url 'List' %}">Regresar</a>
+            <div class="text-center">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit"> Registrate</button>
+                </form>
+                {% block contenidoQueCambia3 %}
+                {% endblock contenidoQueCambia3 %}
+            </div>
         </header>
-    </body>
+    <body>
 </html>

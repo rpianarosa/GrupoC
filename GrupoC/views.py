@@ -1,4 +1,5 @@
 
+from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -11,22 +12,26 @@ from GrupoC.models import Cerveza, Cerveceria, Experiencia
 from django import forms
 from datetime import date
 
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
 
 def PreInicio(req):
     return render(req,'GrupoC/preinicio.html')
 
 def Inicio(req):
-    if(req.method=="post"):
-        print(req.post['date'])
-        dato=date.fromisoformat(req.post['date'])
-        dif=date.today() - dato
-        dias=(dif.days)
-        edad=(dif.days/365)
+    if(req.method=='POST'):
+        if (len(req.POST['date']) > 0):
+            dato=date.fromisoformat(req.POST['date'])
+            dif=date.today() - dato
+            edad=(dif.days/365)
 
-        if (edad>18):
-            return render(req, 'GrupoC/padre2.html')
+            if (edad>18):
+                return render(req, 'GrupoC/padre2.html')
+            else:
+                return render(req, 'GrupoC/preinicio.html', {'error': "Para poder ingresar debes ser mayor de edad"})
         else:
-            return render(req, 'GrupoC/preinicio.html', {'error': "Disculpas, para poder ingresar debes ser mayor de edad."})
+            return render (req, 'GrupoC/preinicio.html', {'error':"Debes ingresar una fecha válida"})
 
     return render(req,'GrupoC/padre2.html')
 
@@ -99,17 +104,36 @@ class ExperienciaCreate (CreateView):
     fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
     template_name = "GrupoC/experiencia_form.html"
 
+def login_request (request):
+    if request.method == "POST":
+            form = AuthenticationForm(request, data = request.POST)
+            if form.is_valid():
+                usuario = form.cleaned_data.get('username')
+                contra = form.cleaned_data.get('password')
+                user = authenticate(username=usuario, password=contra)
+                if user is not None:
+                    login(request, user)
+                    return render(request,"GrupoC/inicio.html",  {"mensaje":f"Bienvenido {usuario}"} )
+                else:
+                    return render(request,"GrupoC/iniciofallido.html", {"mensaje":f"Contraseña incorrecta"} )
+            else:
+                    return render(request,"GrupoC/iniciofallido.html" ,  {"mensaje":f"Usuario incorrecto"})
+    form = AuthenticationForm()
+    return render(request,"GrupoC/login.html", {'form':form} )
 
-class FechaForm(forms.Form):
-    intro_fecha= forms.DateField()
-    
+def registro(request):
+    if request.method == "post":
+        form= UserCreationForm(request.POST)
+        if form.is_valid():
 
-def calcular_edad(intro_fecha):
-    dif= date.today() - intro_fecha
+            username=form.cleaned_data['username']
+            form.save()
+            return render(request, "GrupoC/padre2.html" , {"mensaje":f"Usuario {username} creado"})
+        else:
+            return render(request, "GrupoC/registrofallido.html" , {"mensaje":f"Algun dato es incorrecto"})
+    
+    form =UserCreationForm()
+    return render(request, "GrupoC/registro.html" , {"form":form})
 
-    if dif < 18:    
-        return ("No cumple con la edad requerida para ingresar")
-    
-    else:
-        return render('GrupoC/inicio.html')
-    
+
+

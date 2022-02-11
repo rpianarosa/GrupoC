@@ -2,6 +2,7 @@ from django.urls import path
 from GrupoC import views
 from GrupoC.views import CervezaList, CervezaCreate, CervezaDelete, CervezaUpdate, CervezaDetail
 from GrupoC.views import CerveceriaList, CerveceriaCreate, ExperienciaCreate, ExperienciaDelete, ExperienciaUpdate, ExperienciaList
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.Inicio, name="Inicio"),
@@ -22,5 +23,10 @@ urlpatterns = [
     path('editarExperiencia/<pk>', views.ExperienciaUpdate.as_view(),name='EditExp'),
     path('borrarExperiencia/<pk>/', views.ExperienciaDelete.as_view(),name='DeleteExp'),
     path('nuevaExperiencia', views.ExperienciaCreate.as_view(),name='NewExp'),
+
+    path('Login', views.login_request, name='Login'),
+    path('Registro', views.registro, name='Registro'),
+    path('Logout', LogoutView.as_view(template_name='GrupoC/logout.html'), name='Logout')
+
 
 ]

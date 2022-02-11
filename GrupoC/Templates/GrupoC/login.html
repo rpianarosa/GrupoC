@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Confirmar Eliminar</title>
+        <title>Login</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'statictwo/GrupoC/assets/favicon.ico' %}" />
         <!-- Bootstrap Icons-->
@@ -38,11 +38,25 @@
             </div>
         </nav>
         <header class="masthead">
-            <form method="post">{% csrf_token %}
-                ¿Eliminar "{{ object }}" de la lista?
-                <input type="submit" value="Si" />
-            </form>
-            <a href="{% url 'List' %}">Regresar</a>
+            <div class="text-center">
+                <head class="text-center">
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Login</title>
+                </head>
+                <body>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button type="submit"> Iniciar Sesión</button>
+                    </form>
+                    <a class="btn btn-light btn-sm" href="{% url 'Registro' %}">Registrate</a>
+                    {% block contenidoQueCambia2 %}
+                    {% endblock contenidoQueCambia2 %}
+                </body>
+            </div>
         </header>
+
     </body>
 </html>
