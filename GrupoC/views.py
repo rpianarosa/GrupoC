@@ -11,11 +11,22 @@ from GrupoC.models import Cerveza, Cerveceria, Experiencia
 from django import forms
 from datetime import date
 
-def PreInicio(req):
 
+def PreInicio(req):
     return render(req,'GrupoC/preinicio.html')
 
 def Inicio(req):
+    if(req.method=="post"):
+        print(req.post['date'])
+        dato=date.fromisoformat(req.post['date'])
+        dif=date.today() - dato
+        dias=(dif.days)
+        edad=(dif.days/365)
+
+        if (edad>18):
+            return render(req, 'GrupoC/padre2.html')
+        else:
+            return render(req, 'GrupoC/preinicio.html', {'error': "Disculpas, para poder ingresar debes ser mayor de edad."})
 
     return render(req,'GrupoC/padre2.html')
 
