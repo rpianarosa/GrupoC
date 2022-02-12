@@ -11420,7 +11420,9 @@ header.masthead h1, header.masthead .h1 {
     font-size: 3.5rem;
   }
 }
-
+  .circular--square {
+    border-radius: 50%;
+}
 #portfolio .container-fluid, #portfolio .container-sm, #portfolio .container-md, #portfolio .container-lg, #portfolio .container-xl, #portfolio .container-xxl {
   max-width: 1920px;
 }

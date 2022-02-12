@@ -38,11 +38,13 @@
             </div>
         </nav>
         <header class="masthead">
-            <form method="post">{% csrf_token %}
-                ¿Eliminar "{{ object }}" de la lista?
-                <input type="submit" value="Si" />
-            </form>
-            <a href="{% url 'List' %}">Regresar</a>
+            <div class="text-center">
+                <form method="post">{% csrf_token %}
+                    ¿Eliminar "{{ object }}" de la lista?
+                    <input type="submit" value="Si" />
+                </form>
+                <a href="{% url 'List' %}">Regresar</a>
+            </div>
         </header>
     </body>
 </html>

@@ -15,6 +15,7 @@ from datetime import date
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def PreInicio(req):
     return render(req,'GrupoC/preinicio.html')
@@ -51,18 +52,18 @@ class CervezaDetail (DetailView):
     model= Cerveza
     template_name = "GrupoC/cerveza_detail.html"
 
-class CervezaUpdate (UpdateView):
+class CervezaUpdate (LoginRequiredMixin, UpdateView):
     model= Cerveza
     success_url = '/Cerveblog/listaCervezas'
     fields= ['nombre' , 'IBU', 'grad_alcohol']
     template_name = "GrupoC/cerveza_form.html"
 
-class CervezaDelete (DeleteView):
+class CervezaDelete (LoginRequiredMixin, DeleteView):
     model= Cerveza
     success_url = '/Cerveblog/listaCervezas'
     template_name = "GrupoC/cerveza_conf_delete.html"
 
-class CervezaCreate (CreateView):
+class CervezaCreate (LoginRequiredMixin, CreateView):
     model= Cerveza
     success_url = '/Cerveblog/listaCervezas'
     fields= ['nombre' , 'IBU', 'grad_alcohol']
@@ -74,7 +75,7 @@ class CervezaCreate (CreateView):
 class CerveceriaList (ListView):
     model= Cerveceria
     template_name = "GrupoC/cerveceria_list.html"
-class CerveceriaCreate (CreateView):
+class CerveceriaCreate (LoginRequiredMixin, CreateView):
     model= Cerveceria
     success_url = '/Cerveblog/listaCervecerias'
     fields= ['nombre' , 'dire']
@@ -98,7 +99,7 @@ class ExperienciaDelete (DeleteView):
     success_url = '/Cerveblog/listaExperiencia'
     template_name = "GrupoC/experiencia_conf_delete.html"
 
-class ExperienciaCreate (CreateView):
+class ExperienciaCreate (LoginRequiredMixin, CreateView):
     model= Experiencia
     success_url = '/Cerveblog/listaExperiencia'
     fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
@@ -122,18 +123,20 @@ def login_request (request):
     return render(request,"GrupoC/login.html", {'form':form} )
 
 def registro(request):
-    if request.method == "post":
+    if request.method == "POST":
         form= UserCreationForm(request.POST)
         if form.is_valid():
 
             username=form.cleaned_data['username']
             form.save()
-            return render(request, "GrupoC/padre2.html" , {"mensaje":f"Usuario {username} creado"})
+            return render(request, "GrupoC/inicio.html" , {"mensaje":f"Usuario {username} creado"})
         else:
             return render(request, "GrupoC/registrofallido.html" , {"mensaje":f"Algun dato es incorrecto"})
     
     form =UserCreationForm()
     return render(request, "GrupoC/registro.html" , {"form":form})
+
+
 
 
 

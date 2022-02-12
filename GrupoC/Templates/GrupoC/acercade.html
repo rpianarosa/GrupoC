@@ -4,7 +4,7 @@
 <html lang="en">
     
     <head>
-        
+        {% load static %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -23,6 +23,7 @@
         <link href="{% static 'statictwo/GrupoC/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+        
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
@@ -40,7 +41,49 @@
             </div>
         </nav>
         <header class="masthead">
-        
+            
+                <div id="portfolio" >
+                    <div class="container-lg p-4">
+                        <div class="row justify-content-center">
+                            <div class="row g-9"></div>
+                                <div class="col-lg-2 col-sm-2">
+                                    
+                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/coderhouse.jpg' %}" alt="..." />
+                                        <div class="portfolio-box-caption">
+                                            <div class="project-category text-white text-center">Ramiro Pianarosa</div>
+                                            <div class="project-name text-center">iamvsd</div>
+                                        </div>
+                                    
+                                </div>
+                                <div class="col-lg-1 col-sm-2">
+                                    <div class="portfolio-box-caption">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-sm-2">
+                                    
+                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Ricardo.png' %}" alt="..." />
+                                        <div class="portfolio-box-caption">
+                                            <div class="project-category text-white text-center">Ricardo Minhot</div>
+                                            <div class="project-name text-center">i</div>
+                                        </div>
+                                    
+                                </div>
+                                <div class="col-lg-1 col-sm-2">
+                                    <div class="portfolio-box-caption">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-sm-2">
+                                    
+                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Roberto.jpg' %}" alt="..." />
+                                        <div class="portfolio-box-caption">
+                                            <div class="project-category text-white text-center">Roberto Higuera</div>
+                                            <div class="project-name text-center">idkad</div>
+                                        </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
         </header>
     </body>
 </html>
