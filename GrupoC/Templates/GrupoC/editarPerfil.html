@@ -1,13 +1,15 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+    
     <head>
         {% load static %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Confirmar Eliminar</title>
+        <title>Editar Perfil</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'statictwo/GrupoC/assets/favicon.ico' %}" />
         <!-- Bootstrap Icons-->
@@ -21,6 +23,7 @@
         <link href="{% static 'statictwo/GrupoC/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+        
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
@@ -43,12 +46,21 @@
             </div>
         </nav>
         <header class="masthead">
-            <div class="text-center">
-                <form method="post">{% csrf_token %}
-                    ¿Eliminar "{{ object }}" de la lista?
-                    <input type="submit" value="Si" />
-                </form>
-                <a href="{% url 'List' %}">Regresar</a>
+            <div class="container justify-content-center ">
+                <h2> Editar perfil de {{usuario}} </h2>
+                
+                <form action=""method="POST">{% csrf_token %}
+                    <table class="">
+                        {{miFormulario.as_table}}
+                    </table>
+                    <input type="submit", value="Enviar">
+                
+                
+                </form>   
+                
+                <a class="btn btn-light btn-sm" href="{% url 'Logout' %}">Cerrar sesión</a>
+                {% block contenidoQueCambia5 %}
+                {% endblock contenidoQueCambia5 %}
             </div>
         </header>
         
@@ -72,3 +84,4 @@
         </footer>
     </body>
 </html>
+    

@@ -35,55 +35,60 @@
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'ListCerve' %}">Cervecerias</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'NewExp' %}">Experiencias</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'Contacto' %}">Contacto</a></li>
+                        {% if not request.user.is_authenticated %}
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'Login' %}">Ingresa</a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'editarPerfil' %}" >{{user.username}}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
         <header class="masthead">
-            
-                <div id="portfolio" >
-                    <div class="container-lg p-4">
-                        <div class="row justify-content-center">
-                            <div class="row g-9"></div>
-                                <div class="col-lg-2 col-sm-2">
-                                    
-                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/coderhouse.jpg' %}" alt="..." />
-                                        <div class="portfolio-box-caption">
-                                            <div class="project-category text-white text-center">Ramiro Pianarosa</div>
-                                            <div class="project-name text-center">iamvsd</div>
+            <section class="page-section bg-primary" id="cerveceria">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div id="portfolio" >
+                            <div class="container-lg p-4">
+                                <div class="row justify-content-center">
+                                    <div class="row g-9"></div>
+                                        <div class="col-lg-3 col-sm-2">
+                                            
+                                                <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/coderhouse.jpg' %}" alt="..." />
+                                                <div class="portfolio-box-caption">
+                                                    <div class="project-category text-white text-center"><h3>Ramiro Pianarosa</h3></div>
+                                                    <div class="project-name text-center">Fotógrafo - Estudiante de Ciencias Geológicas - Estudiante de CoderHouse  <strong>rama.pianaro@gmail.com</strong></div>
+                                                </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-lg-3 col-sm-2">
+                                            
+                                                <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Ricardo.png' %}" alt="..." />
+                                                <div class="portfolio-box-caption">
+                                                    <div class="project-category text-white text-center"><h3>Ricardo Minhot</h3></div>
+                                                    <div class="project-name text-center">Licenciado en Biologia - Amante del Mountainbike-running - Estudiante de CoderHouse  <strong>rdminhot@gmail.com</strong></div>
+                                                </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-lg-3 col-sm-2">
+                                            
+                                                <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Roberto.jpg' %}" alt="..." />
+                                                <div class="portfolio-box-caption">
+                                                    <div class="project-category text-white text-center"><h3>Roberto Higuera</h3></div>
+                                                    <div class="project-name text-center">Contador - Tenista - Estudiante de CoderHouse <strong>rhiguerasalas@gmail.com</strong></div>
+                                                </div>
                                         </div>
                                     
                                 </div>
-                                <div class="col-lg-1 col-sm-2">
-                                    <div class="portfolio-box-caption">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-2">
-                                    
-                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Ricardo.png' %}" alt="..." />
-                                        <div class="portfolio-box-caption">
-                                            <div class="project-category text-white text-center">Ricardo Minhot</div>
-                                            <div class="project-name text-center">i</div>
-                                        </div>
-                                    
-                                </div>
-                                <div class="col-lg-1 col-sm-2">
-                                    <div class="portfolio-box-caption">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-2">
-                                    
-                                        <img class="img-fluid" src="{% static 'statictwo/GrupoC/assets/img/Roberto.jpg' %}" alt="..." />
-                                        <div class="portfolio-box-caption">
-                                            <div class="project-category text-white text-center">Roberto Higuera</div>
-                                            <div class="project-name text-center">idkad</div>
-                                        </div>
-                                </div>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
+                
         </header>
         
         <footer class="footer bg-light">
