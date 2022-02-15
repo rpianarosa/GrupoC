@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class UserEditForm(UserCreationForm):
 
-    user = forms.CharField(label="Modificar Usuario")
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput) 
+    user = forms.CharField(label="Usuario")
+    password1 = forms.CharField(label='Nueva Contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repetir nueva contraseña', widget=forms.PasswordInput) 
 
 
     class Meta:
@@ -15,6 +15,3 @@ class UserEditForm(UserCreationForm):
         
 
 
-class AvatarFormulario(forms.Form):
-
-    imagen = forms.ImageField(required=True)

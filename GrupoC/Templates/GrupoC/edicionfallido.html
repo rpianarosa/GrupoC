@@ -1,0 +1,9 @@
+{% extends 'GrupoC/editarPerfil.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia5 %}
+<h4 class="mt-2">{{mensaje}}</h4>
+<a href="{% url 'editarPerfil' %}">Regresar</a>
+{% endblock contenidoQueCambia5 %}

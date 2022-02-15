@@ -45,35 +45,26 @@
                 </nav>
             
             
-                <p>
+                <p class="text-center">Buscaste la cerveza: <b>{{nombre}}</b>
+                
+                {% if cerveza %}
                     
-                        <h3 class="text-center">
-                            <p>Cerveza: <b>{{cerveza}}</b></p>
-                            <p>IBU: <b>{{ IBU }}</b></p>
-                            <p>ABV: <b>{{ grad_alcohol }}</b></p>
+                
+                        {% for cerveza in cerveza %}
+                            <div class="text-center">
+                                <h3>Nombre: {{cerveza.nombre}} </h1>
+                                <h3>IBU: {{cerveza.IBU}} </h3>
+                                <h3>ABV: {{cerveza.grad_alcohol}} </h3>
+                            </div>
+                        {% endfor %}
                         
-                            <a  href="{% url 'BusquedaCerveza' %}">Regresar</a>
-                        </h3>
                     
-                </p>
-                
-                {% if nombres %}
-                <ul>
-                
-                {% for cerveza in nombres %}
-                
-                    <li> {{cerveza.nombre}} </li>
-                    <li> {{cerveza.IBU}} </li>
-                    <li> {{cerveza.grad_alcohol}} </li>
-                
-                {% endfor %}
-                        
-                </ul>
-
-                    
+                {%else %}
+                    <p class="text-center"><strong>No existe esa cerveza</strong></p>
                 {% endif %}
                 
-                
+                <a  class="row justify-content-center" href="{% url 'BusquedaCerveza' %}">Regresar</a>
+                </p>
         </header>   
 
         

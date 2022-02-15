@@ -16,7 +16,10 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from GrupoC.forms import UserEditForm, AvatarFormulario
+from GrupoC.forms import UserEditForm 
+
+from django.core.mail import send_mail
+from django.conf import settings
 
 def PreInicio(req):
     return render(req,'GrupoC/preinicio.html')
@@ -37,9 +40,17 @@ def Inicio(req):
 
     return render(req,'GrupoC/padre2.html')
 
-def Contacto(req):
-
-    return render(req,'GrupoC/contacto.html')
+def Contacto(request):
+    if request.method=="POST":
+        subject=request.POST["nombre"]
+        message=request.POST["mensaje"] + " " + request.POST["mail"]
+        email_form=settings.EMAIL_HOST_USER
+        recipiente=["cerveblog@gmail.com"]
+        send_mail(subject,message,email_form,recipiente)
+        return render(request, 'GrupoC/contacto.html')
+    
+        
+    return render(request,'GrupoC/contacto.html')
 
 def Acercade(req):
 
@@ -112,12 +123,13 @@ def busquedaCerveza(request):
 
 def buscar(request):
     if request.GET["cerveza"]:
-        cerveza = request.GET['cerveza'] 
-        nombre = Cerveza.objects.filter(nombre=cerveza)
-        return render(request, "GrupoC/resultados_busqueda.html", {"nombre":nombre, "cerveza":cerveza})
+        nombre = request.GET["cerveza"] 
+        cerveza = Cerveza.objects.filter(nombre__icontains=nombre)
+        return render(request, "GrupoC/resultados_busqueda.html", {"cerveza":cerveza, "nombre":nombre})
 
     else: 
-        return render (request, "GrupoC/resultados_busqueda.html", {'Cerveza no encontrada'})
+        mensaje='Cerveza no encontrada'
+    return render(request, "GrupoC/resultados_busqueda.html", {mensaje})
 
     
     
@@ -166,7 +178,9 @@ def editarPerfil(request):
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password1']
             usuario.save()
-            return render(request, "GrupoC/padre2.html") 
+            return render(request, "GrupoC/inicio.html", {"mensaje":f"Usuario {usuario.user} modificado"})
+        else:
+            return render(request, "GrupoC/editarPerfil.html" , {"mensaje":f"Algun dato es incorrecto"})
     else: 
         miFormulario= UserEditForm(initial= {'username':usuario.username})
 
