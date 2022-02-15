@@ -16,6 +16,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from GrupoC.forms import UserEditForm, AvatarFormulario
 
 def PreInicio(req):
     return render(req,'GrupoC/preinicio.html')
@@ -105,6 +106,22 @@ class ExperienciaCreate (LoginRequiredMixin, CreateView):
     fields= ['nombre' , 'apellido', 'cerv_tomada', 'cerv_atend', 'punt_cerveza', 'punt_cerveceria']
     template_name = "GrupoC/experiencia_form.html"
 
+
+def busquedaCerveza(request):
+    return render(request, 'GrupoC/busqueda_cerveza.html')
+
+def buscar(request):
+    if request.GET["cerveza"]:
+        cerveza = request.GET['cerveza'] 
+        nombre = Cerveza.objects.filter(nombre=cerveza)
+        return render(request, "GrupoC/resultados_busqueda.html", {"nombre":nombre, "cerveza":cerveza})
+
+    else: 
+        return render (request, "GrupoC/resultados_busqueda.html", {'Cerveza no encontrada'})
+
+    
+    
+
 def login_request (request):
     if request.method == "POST":
             form = AuthenticationForm(request, data = request.POST)
@@ -129,7 +146,7 @@ def registro(request):
 
             username=form.cleaned_data['username']
             form.save()
-            return render(request, "GrupoC/inicio.html" , {"mensaje":f"Usuario {username} creado"})
+            return render(request, "GrupoC/inicio.html" , {"mensaje":f"Usuario {username} creado, ahora ingresa con tus datos"})
         else:
             return render(request, "GrupoC/registrofallido.html" , {"mensaje":f"Algun dato es incorrecto"})
     
@@ -137,6 +154,32 @@ def registro(request):
     return render(request, "GrupoC/registro.html" , {"form":form})
 
 
+def editarPerfil(request):
+
+    usuario = request.user
+    
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST) 
+        if miFormulario.is_valid():  
+            informacion = miFormulario.cleaned_data
+            usuario.user = informacion['user']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password1']
+            usuario.save()
+            return render(request, "GrupoC/padre2.html") 
+    else: 
+        miFormulario= UserEditForm(initial= {'username':usuario.username})
+
+        return render(request, "GrupoC/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+
+
+
+
+
+def urlImagen():
+
+    return "/media/avatares/logo.png"
 
 
 

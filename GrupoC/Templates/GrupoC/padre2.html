@@ -34,7 +34,12 @@
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="#cerveceria">Cervecerias</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="#experiencia">Experiencias</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="#contact">Contacto</a></li>
+                        {% if not request.user.is_authenticated %}
                         <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'Login' %}">Ingresa</a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'editarPerfil' %}">{{user.username}}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
